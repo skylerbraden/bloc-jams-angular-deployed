@@ -1,4 +1,4 @@
-var albumPicasso = {
+    var albumPicasso = {
     name: 'The Colors',
     artist: 'Pablo Picasso',
     label: 'Cubism',
