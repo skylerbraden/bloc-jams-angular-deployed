@@ -25,17 +25,26 @@
             });
             
             currentSong = song;
-        }
+        };
+        
+        /**
+        * @function playSong
+        * @desc Plays new audio file assigned to currentBuzzObject
+        * @param {Object} song
+        */
+        var playSong = function(song) {
+            currentBuzzObject.play();
+            song.playing = true;
+        };
         
         SongPlayer.play = function(song) {
             if (currentSong !== song) {
                 setSong(song);
                 // .play method is from Buzz's own library
-                currentBuzzObject.play();
-                song.playing = true;
+                playSong(song);
             } else if (currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
-                    currentBuzzObject.play();
+                    playSong(song);
                 }
             }
         };
