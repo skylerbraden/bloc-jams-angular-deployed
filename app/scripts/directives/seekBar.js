@@ -27,6 +27,7 @@
                     scope.value = newValue;
                 });
                 
+                
                 attributes.$observe('max', function(newValue) {
                     scope.max = newValue;
                 });
@@ -54,6 +55,8 @@
                 
                 scope.trackThumb = function() {
                     $document.bind('mousemove.thumb', function(event) {
+                        // event.preventDefault() prevents the text from being highlighted on the page while dragging the seek bar.
+                        event.preventDefault();
                         var percent = calculatePercent(seekBar, event);
                         scope.$apply(function() {
                             scope.value = percent * scope.max;
@@ -62,6 +65,7 @@
                     });
                     
                     $document.bind('mouseup.thumb', function() {
+                        
                         $document.unbind('mousemove.thumb');
                         $document.unbind('mouseup.thumb');
                     });

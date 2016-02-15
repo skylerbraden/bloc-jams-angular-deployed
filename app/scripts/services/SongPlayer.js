@@ -77,8 +77,14 @@
         */
         SongPlayer.currentTime = null;
         
+    
         SongPlayer.play = function(song) {
             song = song || SongPlayer.currentSong;
+            
+            if(song == null){
+                return true;
+            }
+            
             if (SongPlayer.currentSong !== song) {
                 setSong(song);
                 // .play method is from Buzz's own library
@@ -141,6 +147,19 @@
             }
         };
         
+        /**
+        * @function setVolume
+        * @desc Set current volume of currently playing song
+        * @param {Number} volume
+        */
+        SongPlayer.setVolume = function(volume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
+            }
+        };
+        
+        SongPlayer.volume = 45;
+           
         return SongPlayer;
     }
     
